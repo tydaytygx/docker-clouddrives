@@ -1,0 +1,28 @@
+services:
+  quark:
+    image: clouddrives:latest
+    container_name: clouddrives
+    volumes:
+      - ./config/:/config/
+      - ./startapp.sh:/startapp.sh
+    environment:
+      - GROUP_ID=1000
+      - USER_ID=1000
+      - ENABLE_CJK_FONT=1
+      - VNC_PASSWORD=YOUR_VERY_STRONG_PASSWORD
+      - WINEPREFIX=/config/.wine
+      - WINEDEBUG=err,+warning
+      - LANG=C.UTF-8
+      - LC_ALL=C.UTF-8
+        #deploy:
+        #      resources:
+        #        limits:
+        #          cpus: '2'
+        #          memory: '2G'
+    ports:
+      - '5801:5800'
+      - '5901:5900'
+        # command:
+        # - sleep
+        #      - infinity
+    restart: always
