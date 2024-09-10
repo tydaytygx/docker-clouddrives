@@ -1,5 +1,5 @@
-# docker_clouddrives
-aliyundrive/aliyunpan, Quarkpan in docker | docker容器运行的阿里云盘，夸克网盘等软件，旨在为没有linux版的网盘软件提供一个运行时，又或是NAS等系统下载用
+# docker_aliyunpan_aliyundrive
+aliyundrive/aliyunpan in docker | docker容器运行的阿里云盘，等软件
 # 前言
 
 项目基于
@@ -38,7 +38,7 @@ latest_release=$(wget -qO- https://api.github.com/repos/GloriousEggroll/wine-ge-
     download_url=$(echo $latest_release | jq -r '.assets[] | select(.name | endswith(".tar.xz")) | .browser_download_url') && \
     echo "Downloading from $download_url" && \
     wget "$download_url" && \
-    tar -xvf $(basename "$download_url") -C /config && \
+    tar -xvf $(basename "$download_url") -C config && \
     rm $(basename "$download_url")
 
 # 或者在 https://github.com/GloriousEggroll/wine-ge-custom 的 release界面手动下载并解压到/config
