@@ -1,8 +1,10 @@
 # docker_clouddrives
 
-Clouddrives in docker | docker容器运行的阿里云盘，夸克网盘等软件，适用于各种Linux或者基于Linux的NAS、没有图形界面的服务器上
+Clouddrives in docker | docker容器运行的阿里云盘，夸克网盘等软件的图形界面，适用于各种Linux或者基于Linux的NAS、没有图形界面的服务器上
 
 希望各种软件官方可以尽快支持Linux版
+
+（镜像大小也许有改进的空间）
 
 # 声明
 
