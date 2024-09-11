@@ -31,8 +31,9 @@ chmod +x startapp.sh
 docker build -t clouddrives .
 ```
 
-## 在宿主机上下载，稍后挂载到容器中
+## 在宿主机上下载wine-ge-custom(linux)，解压到config目录下，稍后挂载到容器中
 ```
+mkdir config
 # 自动下载最新的wine-ge-custom并解压到 config
 latest_release=$(wget -qO- https://api.github.com/repos/GloriousEggroll/wine-ge-custom/releases/latest) && \
     download_url=$(echo $latest_release | jq -r '.assets[] | select(.name | endswith(".tar.xz")) | .browser_download_url') && \
@@ -46,12 +47,13 @@ latest_release=$(wget -qO- https://api.github.com/repos/GloriousEggroll/wine-ge-
 
 ```yml
 services:
-  quark:
+  clouddrives:
     image: clouddrives:latest
     container_name: clouddrives
     volumes:
       - ./config/:/config/
       - ./startapp.sh:/startapp.sh
+      - ./downloads:/users/app/downloads
     environment:
       - GROUP_ID=1000
       - USER_ID=1000
@@ -61,7 +63,11 @@ services:
       - WINEDEBUG=err,+warning
       - LANG=C.UTF-8
       - LC_ALL=C.UTF-8
-
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: '8G'
     ports:
       - '5801:5800'
       - '5901:5900'
@@ -73,8 +79,9 @@ services:
 ```
 docker compose up -d
 ```
+#安装（解压）软件
 
-# 阿里云盘
+## 阿里云盘
 前往阿里云盘官网下载 安装包aDrive.exe
 
 例如
@@ -106,7 +113,7 @@ aDrive.exe
 # 然后像正常使用云盘一样即可
 ```
 
-# 夸克网盘 （同理，复制并使用cmd启动，待补充）
+## 夸克网盘 （同理，复制并使用cmd启动，待补充）
 [https://github.com/dscharrer/innoextract](https://github.com/dscharrer/innoextract)
 
 夸克网盘需要使用innoextract解压，由apt安装的innoextractor可能过旧，这时可以考虑直接从仓库下载最新构建
