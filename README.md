@@ -52,7 +52,7 @@ services:
     volumes:
       - ./config/:/config/
       - ./startapp.sh:/startapp.sh
-      - ./downloads:/config/.wine/driver_c/users/app/Downloads
+      - ./downloads:/config/.wine/drive_c/users/app/Downloads
     environment:
       - GROUP_ID=1000
       - USER_ID=1000
