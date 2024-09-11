@@ -1,4 +1,5 @@
-# docker_clouddrives
+# docker_clouddrives 
+中文 | [English](https://github.com/tydaytygx/docker-clouddrives/blob/main/README_EN.md)
 
 Clouddrives in docker | docker容器运行的阿里云盘，夸克网盘等软件的图形界面，适用于各种Linux或者基于Linux的NAS、没有图形界面的服务器上
 
@@ -191,7 +192,7 @@ cp -r quark config/.wine/drive_c/users/app/
 
 cd c:\users\app\quark
 
-QuarkClouddrive.exe
+QuarkCloudDrive.exe
 ```
 
 
