@@ -1,10 +1,11 @@
 services:
-  quark:
+  clouddrives:
     image: clouddrives:latest
     container_name: clouddrives
     volumes:
       - ./config/:/config/
       - ./startapp.sh:/startapp.sh
+      - ./downloads:/users/app/downloads
     environment:
       - GROUP_ID=1000
       - USER_ID=1000
@@ -14,15 +15,13 @@ services:
       - WINEDEBUG=err,+warning
       - LANG=C.UTF-8
       - LC_ALL=C.UTF-8
-        #deploy:
-        #      resources:
-        #        limits:
-        #          cpus: '2'
-        #          memory: '2G'
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: '8G'
     ports:
       - '5801:5800'
       - '5901:5900'
-        # command:
-        # - sleep
-        #      - infinity
+
     restart: always
