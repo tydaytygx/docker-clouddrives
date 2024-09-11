@@ -94,9 +94,10 @@ services:
 ```
 docker compose up -d
 ```
-#安装（解压）软件
 
-## 阿里云盘
+# 安装（解压）软件
+
+# 阿里云盘
 前往阿里云盘官网下载 安装包aDrive.exe
 
 例如
@@ -115,20 +116,30 @@ cp -r aDrive /config/.wine/driver_c/users/app/aDrive
 ```
 
 
-# 访问
+## 访问
+
 浏览器访问IP:5801
+
+### 图形启动方式
+
+导航到C:\users\app\aDrive
+
+双击aDrive.exe启动
+
+### 命令行的启动方式
 
 双击cmd.exe
 ```batch
 
-cd c:/users/app/aDrive
+cd c:\users\app\aDrive
 
 aDrive.exe
 
 # 然后像正常使用云盘一样即可
 ```
 
-## 夸克网盘 （同理，复制并使用cmd启动，待补充）
+# 夸克网盘 （同理，复制到./config，VNC访问启动，待补充）
+
 [https://github.com/dscharrer/innoextract](https://github.com/dscharrer/innoextract)
 
 夸克网盘需要使用innoextract解压，由apt安装的innoextractor可能过旧，这时可以考虑直接从仓库下载最新构建
@@ -143,10 +154,25 @@ mv QuarkCloudDrive.exe quark
 innoextract QuarkCloudDrive.exe
 
 cp -r quark config/.wine/drive_c/users/app/
+```
 
-# 访问浏览器
 
-cd c:/users/app/quark
+## 访问
+
+浏览器访问IP:5801
+
+### 图形启动方式
+
+导航到C:\users\app\quark
+
+双击QuarkClouddrive.exe启动
+
+### 命令行的启动方式
+
+```batch
+双击cmd.exe
+
+cd c:\users\app\quark
 
 QuarkClouddrive.exe
 ```
