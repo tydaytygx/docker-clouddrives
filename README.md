@@ -117,12 +117,24 @@ aDrive.exe
 [https://github.com/dscharrer/innoextract](https://github.com/dscharrer/innoextract)
 
 夸克网盘需要使用innoextract解压，由apt安装的innoextractor可能过旧，这时可以考虑直接从仓库下载最新构建
+
+```bash
 mkdir quark
+
 mv QuarkCloudDrive.exe quark
+
 # 具体的安装包名（你也可以使用mv name_A name_B来更改文件名）
+
 innoextract QuarkCloudDrive.exe
+
 cp -r quark config/.wine/drive_c/users/app/
 
+# 访问浏览器
+
+cd c:/users/app/quark
+
+QuarkClouddrive.exe
+```
 
 
 
