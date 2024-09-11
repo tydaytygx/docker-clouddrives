@@ -42,7 +42,7 @@ latest_release=$(wget -qO- https://api.github.com/repos/GloriousEggroll/wine-ge-
     tar -xvf $(basename "$download_url") -C config && \
     rm $(basename "$download_url")
 
-# 或者在 https://github.com/GloriousEggroll/wine-ge-custom 的 release界面手动下载并解压到/config
+# 或者在 https://github.com/GloriousEggroll/wine-ge-custom 的 release界面手动下载并解压到./config
 ```
 ```yml
 services:
