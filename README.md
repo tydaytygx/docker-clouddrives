@@ -169,8 +169,9 @@ cp -r quark config/.wine/drive_c/users/app/
 
 ### 命令行的启动方式
 
-```batch
 双击cmd.exe
+
+```batch
 
 cd c:\users\app\quark
 
