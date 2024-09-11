@@ -33,7 +33,16 @@ Clouddrives in docker | docker容器运行的阿里云盘，夸克网盘等软�
 请自行安装docker
 
 # 使用说明
-## 拉取资源并构建镜像
+## 使用预构建镜像
+```bash
+docker pull tydaytygx/clouddrives:latest
+
+git clone https://github.com/tydaytygx/docker-clouddrives
+
+chmod +x startapp.sh
+
+```
+## 拉取资源并在本地构建镜像（可选）
 ```bash 
 git clone https://github.com/tydaytygx/docker-clouddrives
 
@@ -50,7 +59,9 @@ docker build -t clouddrives .
 
 ## 在宿主机上下载wine-ge-custom(linux)，解压到config目录下，稍后挂载到容器中
 ```
+# 新建一个config文件夹，用于放入wine-ge-custom
 mkdir config
+
 # 自动下载最新的wine-ge-custom并解压到 config
 latest_release=$(wget -qO- https://api.github.com/repos/GloriousEggroll/wine-ge-custom/releases/latest) && \
     download_url=$(echo $latest_release | jq -r '.assets[] | select(.name | endswith(".tar.xz")) | .browser_download_url') && \
