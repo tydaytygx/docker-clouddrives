@@ -38,6 +38,8 @@ Clouddrives in docker | docker容器运行的阿里云盘，夸克网盘等软�
 ```bash
 docker pull tydaytygx/clouddrives:latest
 
+docker tag tydaytygx/clouddrives:latest clouddrives:latest
+
 git clone https://github.com/tydaytygx/docker-clouddrives
 
 chmod +x startapp.sh
