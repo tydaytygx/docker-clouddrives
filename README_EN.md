@@ -38,6 +38,8 @@ docker pull tydaytygx/clouddrives:latest
 
 git clone https://github.com/tydaytygx/docker-clouddrives
 
+cd docker-clouddrives
+
 chmod +x startapp.sh
 
 ```
