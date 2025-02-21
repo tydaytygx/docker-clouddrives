@@ -132,7 +132,7 @@ mkdir aDrive
 
 7z x aDrive.exe -oaDrive
 
-cp -r aDrive /config/.wine/driver_c/users/app/aDrive
+cp -r aDrive ./config/.wine/driver_c/users/app/aDrive
 
 ```
 
@@ -174,7 +174,7 @@ mv QuarkCloudDrive.exe quark
 
 innoextract QuarkCloudDrive.exe
 
-cp -r quark config/.wine/drive_c/users/app/
+cp -r quark ./config/.wine/drive_c/users/app/
 ```
 
 
