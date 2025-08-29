@@ -1,4 +1,7 @@
 # docker_clouddrives
+English | [中文](https://github.com/tydaytygx/docker-clouddrives/blob/main/README.md)
+
+![](https://raw.githubusercontent.com/tydaytygx/docker-clouddrives/refs/heads/main/images/docker-clouddrives.png)
 
 Clouddrives in docker | Graphical interface of Alibaba Cloud Drive, Quark Cloud Drive and other software running in docker container, suitable for various Linux or Linux-based NAS, servers without graphical interface
 
