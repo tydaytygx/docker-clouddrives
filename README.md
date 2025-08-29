@@ -62,7 +62,7 @@ chmod +x startapp.sh
 docker build -t clouddrives .
 ```
 
-## 在宿主机上下载wine-ge-custom(linux)，解压到config目录下，稍后挂载到容器中
+## (可选)在宿主机上下载wine-ge-custom(linux)，解压到config目录下，稍后挂载到容器中(经过测试，wine10后各类网盘不再需要winege了)
 ```
 # 新建一个config文件夹，用于放入wine-ge-custom
 mkdir config
@@ -77,39 +77,8 @@ latest_release=$(wget -qO- https://api.github.com/repos/GloriousEggroll/wine-ge-
 
 # 或者在 https://github.com/GloriousEggroll/wine-ge-custom 的 release界面手动下载并解压到./config
 ```
-```yml
-services:
-  clouddrives:
-    image: clouddrives:latest
-    container_name: clouddrives
-    volumes:
-      - ./config/:/config/
-      - ./startapp.sh:/startapp.sh
-      - ./downloads:/config/.wine/drive_c/users/app/Downloads
-    environment:
-      - GROUP_ID=1000
-      - USER_ID=1000
-      - ENABLE_CJK_FONT=1
-      - VNC_PASSWORD=YOUR_VERY_STRONG_PASSWORD
-      - WINEPREFIX=/config/.wine
-      #- WINEDEBUG=err,+warning
-      - LANG=C.UTF-8
-      - LC_ALL=C.UTF-8
-    deploy:
-      resources:
-        limits:
-          cpus: '2'
-          memory: '8G'
-    ports:
-      - '5801:5800'
-      - '5901:5900'
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
-    restart: always
-```
+# 根据需要编辑docker-compose.yml
+
 # 启动容器
 
 ```

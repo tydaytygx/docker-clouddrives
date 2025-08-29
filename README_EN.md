@@ -58,7 +58,7 @@ chmod +x startapp.sh
 docker build -t clouddrives .
 ```
 
-## Download wine-ge-custom (linux) on the host, unzip it to the config directory, and mount it to the container later
+## (Optional)Download wine-ge-custom (linux) on the host, unzip it to the config directory, and mount it to the container later(Wine-10 is good enough for clouddrives by testing)
 ```
 # Create a new config folder to put wine-ge-custom
 mkdir config
@@ -73,39 +73,8 @@ rm $(basename "$download_url")
 
 # Or manually download and unzip to ./config in the release interface of https://github.com/GloriousEggroll/wine-ge-custom
 ```
-```yml
-services:
-clouddrives:
-image: clouddrives:latest
-container_name: clouddrives
-volumes:
-- ./config/:/config/
-- ./startapp.sh:/startapp.sh
-- ./downloads:/config/.wine/drive_c/users/app/Downloads
-environment:
-- GROUP_ID=1000
-- USER_ID=1000
-- ENABLE_CJK_FONT=1
-- VNC_PASSWORD=YOUR_VERY_STRONG_PASSWORD
-- WINEPREFIX=/config/.wine
-#- WINEDEBUG=err,+warning
-- LANG=C.UTF-8
-- LC_ALL=C.UTF-8
-deploy:
-resources:
-limits:
-cpus: '2'
-memory: '8G'
-ports:
-- '5801:5800'
-- '5901:5900'
-logging:
-driver: "json-file"
-options:
-max-size: "10m"
-max-file: "3"
-restart: always
-```
+# Customize docker-compose.yml if you need.
+
 # Start the container
 
 ```

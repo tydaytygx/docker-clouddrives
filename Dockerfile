@@ -1,4 +1,4 @@
-FROM jlesage/baseimage-gui:ubuntu-22.04-v4.6
+FROM jlesage/baseimage-gui:ubuntu-24.04-v4.9
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV DISPLAY=":1"
@@ -13,7 +13,7 @@ RUN dpkg --add-architecture i386 \
                           desktop-file-utils    \
                           libasound2-dev        \
                           locales               \
-                          fonts-wqy-zenhei      \   
+                          fonts-wqy-zenhei      \
                           libgtk-3-0            \
                           libnotify4            \
                           libnss3               \
@@ -21,7 +21,7 @@ RUN dpkg --add-architecture i386 \
                           libxtst6              \
                           xdg-utils             \
                           libatspi2.0-0         \
-                          libuuid1              \  
+                          libuuid1              \
                           libappindicator3-1    \
                           libsecret-1-0         \
                           wget                  \
@@ -40,14 +40,15 @@ RUN dpkg --add-architecture i386 \
                           git make \
                           cabextract \
                           udev \
-    && wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources \
+    && wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/noble/winehq-noble.sources \
     && mkdir -pm755 /etc/apt/keyrings \
     && wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key \
     && apt update \
     && apt install --install-recommends -y winehq-devel \
+    && locale-gen en_US.UTF-8 \
 #    && apt upgrade -y \
 #    && mkdir /opt/wine-stable/share/wine/mono && wget -O - https://dl.winehq.org/wine/wine-mono/9.3.0/wine-mono-9.3.0-x86.tar.xz | tar -xJv -C /opt/wine-stable/share/wine/mono \
-#    && mkdir /opt/wine-stable/share/wine/gecko && wget -O /opt/wine-stable/share/wine/gecko/wine-gecko-2.47.1-x86.msi https://dl.winehq.org/wine/wine-gecko/2.47.1/wine-gecko-2.47.1-x86.msi \   
+#    && mkdir /opt/wine-stable/share/wine/gecko && wget -O /opt/wine-stable/share/wine/gecko/wine-gecko-2.47.1-x86.msi https://dl.winehq.org/wine/wine-gecko/2.47.1/wine-gecko-2.47.1-x86.msi \
     && rm -rf /var/lib/apt/lists/*
 
 # build and install  winetricks
@@ -65,8 +66,6 @@ RUN dpkg --add-architecture i386 \
 ENV APP_NAME="quark" \
     S6_KILL_GRACETIME=8000
 
-# Configure locale for unicode
-RUN locale-gen en_US.UTF-8
 ENV LANG=en_US.UTF-8
 WORKDIR /config
 
