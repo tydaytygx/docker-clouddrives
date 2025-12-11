@@ -1,4 +1,4 @@
-FROM jlesage/baseimage-gui:ubuntu-24.04-v4.9
+FROM jlesage/baseimage-gui:ubuntu-24.04-v4
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV DISPLAY=":1"
@@ -45,7 +45,6 @@ RUN dpkg --add-architecture i386 \
     && wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key \
     && apt update \
     && apt install --install-recommends -y winehq-devel \
-    && locale-gen en_US.UTF-8 \
 #    && apt upgrade -y \
 #    && mkdir /opt/wine-stable/share/wine/mono && wget -O - https://dl.winehq.org/wine/wine-mono/9.3.0/wine-mono-9.3.0-x86.tar.xz | tar -xJv -C /opt/wine-stable/share/wine/mono \
 #    && mkdir /opt/wine-stable/share/wine/gecko && wget -O /opt/wine-stable/share/wine/gecko/wine-gecko-2.47.1-x86.msi https://dl.winehq.org/wine/wine-gecko/2.47.1/wine-gecko-2.47.1-x86.msi \
@@ -57,15 +56,12 @@ RUN dpkg --add-architecture i386 \
 #    && sudo make install \
 #    && rm -rf /tmp/winetricks
 
-#RUN \
-#    APP_ICON_URL='https://raw.githubusercontent.com/KevinLADLee/baidunetdisk-docker/master/logo.png' && \
-#    install_app_icon.sh "$APP_ICON_URL"
-
-#COPY rootfs/ /
 
 ENV APP_NAME="quark" \
     S6_KILL_GRACETIME=8000
 
+# Configure locale for unicode
+RUN locale-gen en_US.UTF-8
 ENV LANG=en_US.UTF-8
 WORKDIR /config
 
