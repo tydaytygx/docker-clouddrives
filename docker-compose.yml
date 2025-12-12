@@ -1,6 +1,6 @@
 services:
   clouddrives:
-    image: clouddrives:latest
+    image: tydaytygx/clouddrives:latest
     container_name: clouddrives
     volumes:
       - ./config/:/config/
