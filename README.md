@@ -46,7 +46,6 @@ Clouddrives in docker | docker容器运行的阿里云盘，夸克网盘等软�
 ```bash
 docker pull tydaytygx/clouddrives:latest
 
-docker tag tydaytygx/clouddrives:latest clouddrives:latest
 
 git clone https://github.com/tydaytygx/docker-clouddrives
 
@@ -54,6 +53,7 @@ cd docker-clouddrives
 
 chmod +x startapp.sh
 
+docker compose up -d
 ```
 ## 拉取资源并在本地构建镜像（可选）
 ```bash 
@@ -68,6 +68,8 @@ cp -r docker-baseimage-gui/rootfs .
 chmod +x startapp.sh
 
 docker build -t clouddrives .
+
+docker compose up -d
 ```
 
 ## (可选)在宿主机上下载wine-ge-custom(linux)，解压到config目录下，稍后挂载到容器中(经过测试，wine10后各类网盘不再需要winege了)
